@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Orbitron:wght@400;600;700;800&display=swap');
+
+:root {
+  --gold: #d6ad60;
+  --light: #ffe5ad;
+  --black: #050505;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  background: var(--black);
+  color: white;
+  font-family: Montserrat, sans-serif;
+  overflow-x: hidden;
+}
+
+.scene {
+  height: 100vh;
+  min-height: 700px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 100px 10%;
+  scroll-snap-align: start;
+  isolation: isolate;
+  background: #080808;
+}
+
+.scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 70% 50%, #b17a3215, transparent 60%);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 76px;
+  padding: 0 7%;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #050505a8;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #d6ad6025;
+}
+
+.logo {
+  font: 800 25px Orbitron;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 3px;
+}
+
+.logo span { color: var(--gold); }
+
+nav { display: flex; gap: 26px; }
+
+nav a {
+  text-decoration: none;
+  color: #c6bba8;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+nav a:hover, nav a.active { color: var(--gold); }
+
+.progress {
+  height: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 15px var(--gold);
+  position: fixed;
+  top: 76px;
+  left: 0;
+  width: 0;
+  z-index: 60;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #050505;
+  display: grid;
+  place-items: center;
+  animation: loaderOut 1s 1s forwards;
+  pointer-events: none;
+}
+
+.loader span {
+  font: 800 55px Orbitron;
+  color: var(--gold);
+  letter-spacing: 10px;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse { to { opacity: .3; transform: scale(1.1); } }
+@keyframes loaderOut { to { opacity: 0; visibility: hidden; } }
+
+/* PARTICLES */
+
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -15px;
+  background: var(--light);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--gold);
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: .8; }
+  100% { transform: translateY(-110vh) translateX(90px); opacity: 0; }
+}
+
+/* HERO */
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("https://images2.alphacoders.com/618/thumb-1920-618073.jpg") center 30% / cover;
+  transform: scale(1.08);
+  animation: cinematicZoom 18s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicZoom {
+  to { transform: scale(1.2) translateX(-2%); }
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg,#030303 0%,#030303d9 35%,#03030345 100%),
+              linear-gradient(0deg,#050505 0%,transparent 40%);
+}
+
+.hero-content { max-width: 900px; }
+
+.eyebrow {
+  display: block;
+  color: var(--gold);
+  font: 10px Orbitron;
+  letter-spacing: 5px;
+  margin-bottom: 28px;
+}
+
+h1 {
+  font: 800 clamp(55px, 9vw, 115px)/.95 Orbitron;
+  letter-spacing: -5px;
+}
+
+h1 span, h2 span {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--gold);
+  text-shadow: 0 0 35px #d6ad6020;
+}
+
+.gold-line {
+  height: 2px;
+  width: 100px;
+  background: var(--gold);
+  box-shadow: 0 0 15px var(--gold);
+  margin: 35px 0;
+}
+
+.hero-content > p {
+  color: #ddd0b9;
+  letter-spacing: 6px;
+  font-size: 11px;
+}
+
+.discover {
+  display: inline-block;
+  margin-top: 60px;
+  color: var(--light);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.discover span { margin-left: 18px; font-size: 22px; }
+
+.side-label {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  writing-mode: vertical-rl;
+  font: 10px Orbitron;
+  color: var(--gold);
+  letter-spacing: 4px;
+}
+
+/* SCENE TEXT */
+
+.scene-content {
+  position: relative;
+  z-index: 3;
+  max-width: 680px;
+}
+
+h2 {
+  font: 800 clamp(42px, 6vw, 78px)/1.05 Orbitron;
+  letter-spacing: -3px;
+}
+
+.short-line {
+  color: var(--light);
+  font: 12px Orbitron;
+  letter-spacing: 3px;
+  margin-top: 30px;
+}
+
+.detail {
+  margin-top: 35px;
+  color: #c4bcae;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.detail p { margin: 8px 0; }
+
+/* INTRO */
+
+.intro {
+  background: radial-gradient(ellipse at 80% 50%, #5e401d35, transparent 50%), #080808;
+}
+
+.photo-one {
+  position: absolute;
+  z-index: -1;
+  right: -3%;
+  top: 0;
+  height: 100%;
+  width: 58%;
+  background: linear-gradient(90deg,#080808 0%,transparent 65%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey_Jr_at_Comic_Con_2007.jpg") center / cover;
+  opacity: .65;
+  filter: saturate(.7);
+}
+
+.floating-word {
+  position: absolute;
+  right: 5%;
+  bottom: 9%;
+  color: #d6ad6015;
+  font: 800 clamp(50px, 9vw, 130px) Orbitron;
+  pointer-events: none;
+}
+
+/* DESCRIPTION */
+
+.about {
+  background: radial-gradient(ellipse at 75% 45%, #4e351c35, transparent 55%), #070707;
+}
+
+.about-image {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg,#070707 0%,transparent 75%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey,_Jr._2010.jpg") center / cover;
+  opacity: .55;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 38px;
+  max-width: 450px;
+}
+
+.data-card {
+  padding: 20px;
+  border: 1px solid #d6ad6045;
+  background: #090909a8;
+  backdrop-filter: blur(12px);
+  transition: .4s;
+  transform-style: preserve-3d;
+}
+
+.data-card:hover {
+  transform: perspective(700px) rotateY(10deg) translateZ(15px);
+  background: #d6ad6015;
+}
+
+.data-card strong {
+  display: block;
+  font: 700 27px Orbitron;
+  color: var(--gold);
+}
+
+.data-card span {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: 9px;
+  color: #c6bba8;
+}
+
+.data-card.wide { grid-column: span 2; }
+
+.small-note {
+  margin-top: 22px;
+  color: #b7a98f;
+  letter-spacing: 2px;
+  font-size: 11px;
+}
+
+/* IMPACT */
+
+.impact {
+  background: radial-gradient(ellipse at 80% 40%, #64431c40, transparent 55%), #060606;
+}
+
+.impact-photo {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  width: 57%;
+  height: 100%;
+  background: linear-gradient(90deg,#060606 0%,#06060655 50%,transparent 100%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey,_Jr._2012.jpg") center / cover;
+  opacity: .5;
+}
+
+.big-stat {
+  font: 800 clamp(90px, 15vw, 180px) Orbitron;
+  color: var(--gold);
+  line-height: 1;
+  margin-top: 30px;
+  text-shadow: 0 0 45px #d6ad6040;
+}
+
+.big-stat span { font-size: .55em; }
+
+.impact-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.impact-tags span {
+  border: 1px solid #d6ad6050;
+  padding: 11px 14px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--light);
+}
+
+.impact-word { color: #d6ad6010; }
+
+/* GUIDELINES */
+
+.guidelines {
+  background: radial-gradient(ellipse at 75% 40%, #62431f25, transparent 55%), #070707;
+}
+
+.guidelines h2 { font-size: clamp(45px, 6vw, 75px); }
+
+.guideline-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.guideline-card {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 19px;
+  border: 1px solid #d6ad6035;
+  background: #11100eaa;
+  transition: .4s;
+}
+
+.guideline-card:hover {
+  transform: perspective(600px) rotateX(5deg) translateY(-7px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px #d6ad6015;
+}
+
+.guideline-card span {
+  font: 13px Orbitron;
+  color: var(--gold);
+}
+
+.guideline-card strong {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.final-glow {
+  position: absolute;
+  right: -200px;
+  bottom: -300px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: #d6ad6012;
+  filter: blur(100px);
+}
+
+/* REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(55px);
+  transition: 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media(max-width: 750px) {
+  html { scroll-snap-type: y proximity; }
+  header { padding: 0 5%; }
+  nav { gap: 10px; }
+  nav a { font-size: 7px; }
+  .scene { padding: 110px 7%; min-height: 100vh; height: auto; }
+  .hero { height: 100vh; }
+  .hero-content h1 { font-size: 55px; letter-spacing: -3px; }
+  .photo-one, .about-image, .impact-photo { width: 100%; opacity: .25; }
+  .guideline-cards { grid-template-columns: 1fr; }
+  .scene-content { width: 100%; }
+  .side-label { display: none; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}header {
+  display: none;
+}
+
+.progress {
+  top: 0;
+}
