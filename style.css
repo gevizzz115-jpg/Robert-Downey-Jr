@@ -4,14 +4,9 @@
   --gold: #d6ad60;
   --light: #ffe5ad;
   --black: #050505;
-  --blue: #168bff;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -23,25 +18,6 @@ body {
   color: white;
   font-family: Montserrat, sans-serif;
   overflow-x: hidden;
-}
-
-/* CINEMATIC LIGHTING */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 15% 25%, #168bff16, transparent 38%),
-    radial-gradient(circle at 85% 75%, #d6ad6015, transparent 40%);
-  animation: ambientLight 9s ease-in-out infinite alternate;
-}
-
-@keyframes ambientLight {
-  0% { opacity: .35; }
-  100% { opacity: 1; }
 }
 
 .scene {
@@ -101,16 +77,14 @@ nav a {
   transition: .3s;
 }
 
-nav a:hover, nav a.active {
-  color: var(--gold);
-}
+nav a:hover, nav a.active { color: var(--gold); }
 
 .progress {
   height: 2px;
   background: var(--gold);
   box-shadow: 0 0 15px var(--gold);
   position: fixed;
-  top: 0;
+  top: 76px;
   left: 0;
   width: 0;
   z-index: 60;
@@ -134,13 +108,8 @@ nav a:hover, nav a.active {
   animation: pulse 1s infinite alternate;
 }
 
-@keyframes pulse {
-  to { opacity: .3; transform: scale(1.1); }
-}
-
-@keyframes loaderOut {
-  to { opacity: 0; visibility: hidden; }
-}
+@keyframes pulse { to { opacity: .3; transform: scale(1.1); } }
+@keyframes loaderOut { to { opacity: 0; visibility: hidden; } }
 
 /* PARTICLES */
 
@@ -186,9 +155,8 @@ nav a:hover, nav a.active {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(90deg,#030303 0%,#030303d9 35%,#03030345 100%),
-    linear-gradient(0deg,#050505 0%,transparent 40%);
+  background: linear-gradient(90deg,#030303 0%,#030303d9 35%,#03030345 100%),
+              linear-gradient(0deg,#050505 0%,transparent 40%);
 }
 
 .hero-content { max-width: 900px; }
@@ -233,18 +201,9 @@ h1 span, h2 span {
   text-decoration: none;
   font-size: 10px;
   letter-spacing: 3px;
-  transition: .4s;
 }
 
-.discover:hover {
-  letter-spacing: 6px;
-  text-shadow: 0 0 15px var(--gold);
-}
-
-.discover span {
-  margin-left: 18px;
-  font-size: 22px;
-}
+.discover span { margin-left: 18px; font-size: 22px; }
 
 .side-label {
   position: absolute;
@@ -298,9 +257,7 @@ h2 {
   top: 0;
   height: 100%;
   width: 58%;
-  background:
-    linear-gradient(90deg,#080808 0%,transparent 65%),
-    url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey_Jr_at_Comic_Con_2007.jpg") center / cover;
+  background: linear-gradient(90deg,#080808 0%,transparent 65%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey_Jr_at_Comic_Con_2007.jpg") center / cover;
   opacity: .65;
   filter: saturate(.7);
 }
@@ -327,9 +284,7 @@ h2 {
   top: 0;
   width: 55%;
   height: 100%;
-  background:
-    linear-gradient(90deg,#070707 0%,transparent 75%),
-    url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey,_Jr._2010.jpg") center / cover;
+  background: linear-gradient(90deg,#070707 0%,transparent 75%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey,_Jr._2010.jpg") center / cover;
   opacity: .55;
 }
 
@@ -353,7 +308,6 @@ h2 {
 .data-card:hover {
   transform: perspective(700px) rotateY(10deg) translateZ(15px);
   background: #d6ad6015;
-  box-shadow: 0 0 35px #d6ad6025;
 }
 
 .data-card strong {
@@ -392,9 +346,7 @@ h2 {
   top: 0;
   width: 57%;
   height: 100%;
-  background:
-    linear-gradient(90deg,#060606 0%,#06060655 50%,transparent 100%),
-    url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey,_Jr._2012.jpg") center / cover;
+  background: linear-gradient(90deg,#060606 0%,#06060655 50%,transparent 100%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Robert_Downey,_Jr._2012.jpg") center / cover;
   opacity: .5;
 }
 
@@ -431,9 +383,7 @@ h2 {
   background: radial-gradient(ellipse at 75% 40%, #62431f25, transparent 55%), #070707;
 }
 
-.guidelines h2 {
-  font-size: clamp(45px, 6vw, 75px);
-}
+.guidelines h2 { font-size: clamp(45px, 6vw, 75px); }
 
 .guideline-cards {
   display: grid;
@@ -492,98 +442,19 @@ h2 {
   transform: translateY(0);
 }
 
-/* EXTRA CINEMATIC EFFECTS */
-
-.scene-content,
-.hero-content {
-  animation: contentEntrance 1.2s ease both;
-}
-
-@keyframes contentEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.data-card,
-.guideline-card,
-.impact-tags span {
-  position: relative;
-  overflow: hidden;
-}
-
-.data-card::before,
-.guideline-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 70%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, #ffffff16, transparent);
-  transform: skewX(-20deg);
-  transition: .7s;
-  pointer-events: none;
-}
-
-.data-card:hover::before,
-.guideline-card:hover::before {
-  left: 150%;
-}
-
-h1, h2 {
-  text-shadow: 0 0 30px #d6ad6010;
-}
-
-::selection {
-  background: var(--gold);
-  color: #050505;
-}
-
-/* RESPONSIVE */
-
 @media(max-width: 750px) {
   html { scroll-snap-type: y proximity; }
-
   header { padding: 0 5%; }
-
   nav { gap: 10px; }
-
   nav a { font-size: 7px; }
-
-  .scene {
-    padding: 110px 7%;
-    min-height: 100vh;
-    height: auto;
-  }
-
+  .scene { padding: 110px 7%; min-height: 100vh; height: auto; }
   .hero { height: 100vh; }
-
-  .hero-content h1 {
-    font-size: 55px;
-    letter-spacing: -3px;
-  }
-
-  .photo-one,
-  .about-image,
-  .impact-photo {
-    width: 100%;
-    opacity: .25;
-  }
-
+  .hero-content h1 { font-size: 55px; letter-spacing: -3px; }
+  .photo-one, .about-image, .impact-photo { width: 100%; opacity: .25; }
   .guideline-cards { grid-template-columns: 1fr; }
-
   .scene-content { width: 100%; }
-
   .side-label { display: none; }
 }
-
-/* REDUCED MOTION */
 
 @media(prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -591,11 +462,7 @@ h1, h2 {
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* FINAL NAVIGATION SETTINGS */
-
-header {
+}header {
   display: none;
 }
 
